@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>402941847413-h3j20ocjfsutn172qhtrqkt5lv7sojru.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.402941847413-h3j20ocjfsutn172qhtrqkt5lv7sojru</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA9L4x_xwymVZvEfuMaETZi9ID9QqXrCiM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>402941847413</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>co.com.mercave.app.1</string>
+	<key>PROJECT_ID</key>
+	<string>push-notificaction-653e0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>push-notificaction-653e0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:402941847413:ios:7218c08d645cd66a7a553c</string>
+</dict>
+</plist>
