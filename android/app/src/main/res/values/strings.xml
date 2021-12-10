@@ -5,7 +5,6 @@
     <!-- Replace "000000000000" with your Facebook App ID here. -->
     <!-- <string name="facebook_app_id">591810818035972</string> -->
     <string name="facebook_app_id">2946799522303172</string> 
-    
     <string name="fb_login_protocol_scheme">fb2946799522303172</string>
 
 
