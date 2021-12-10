@@ -28,6 +28,7 @@ dependencies:
   cached_network_image: ^2.2.0+1
   package_info: ^0.4.0+18
   share: ">=0.6.4+5 <2.0.0"
+  firebase_messaging: ^7.0.3
 
 dev_dependencies:
   flutter_test:

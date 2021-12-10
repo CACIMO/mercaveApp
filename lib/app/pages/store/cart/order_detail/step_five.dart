@@ -533,7 +533,7 @@ class _StepFiveState extends State<StepFive> {
                       horizontal: 16.0,
                     ),
                     child: Text(
-                      StringService.getPriceFormat(number: 0.0),
+                      StringService.getPriceFormat(number: 5000),
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         fontSize: fontSizeSummary,
@@ -609,7 +609,8 @@ class _StepFiveState extends State<StepFive> {
                       horizontal: 16.0,
                     ),
                     child: Text(
-                      StringService.getPriceFormat(number: widget.totalResume),
+                      StringService.getPriceFormat(
+                          number: widget.totalResume + 5000),
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         fontSize: fontSizeSummary,

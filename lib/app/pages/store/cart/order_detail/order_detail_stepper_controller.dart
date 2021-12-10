@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mercave/app/core/services/app/config.api.service.dart';
+import 'package:mercave/app/core/services/app/shipping.service.dart';
 import 'package:mercave/app/core/services/session/session.service.dart';
 import 'package:mercave/app/core/services/sqlite/tables/cart_product/cart_product.service.dart';
 import 'package:mercave/app/core/services/sqlite/tables/user/user.service.dart';
@@ -401,6 +402,8 @@ class OrderDetailStepperController {
       }
 
       if (paymentMethod != 'online') {
+        String orderId = orderCreatedData['id'].toString();
+        await ShippingAPIService.updateShippingValue(orderId);
         showDialog(
           context: context,
           barrierDismissible: false,
@@ -457,6 +460,8 @@ class OrderDetailStepperController {
       if (paymentMethod == 'online') {
         String orderId = orderCreatedData['id'].toString();
         String orderKey = orderCreatedData['order_key'];
+
+        await ShippingAPIService.updateShippingValue(orderId);
 
         String redirectUrl =
             'https://www.mercave.com.co/finalizar-compra/order-pay/$orderId/?key=$orderKey&from_mobile_app=true';

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "402941847413",
-    "project_id": "push-notificaction-653e0",
-    "storage_bucket": "push-notificaction-653e0.appspot.com"
+    "project_number": "720452575230",
+    "project_id": "mercave-ea90f",
+    "storage_bucket": "mercave-ea90f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:402941847413:android:68c67356f4883fed7a553c",
+        "mobilesdk_app_id": "1:720452575230:android:fae62f1297daf4f7acaaaf",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.etrivinos.mercave"
         }
       },
       "oauth_client": [
         {
-          "client_id": "402941847413-udce5fbta6n0kdd5ink2257mmi5o6b37.apps.googleusercontent.com",
+          "client_id": "720452575230-jlvme6bpuqcfgcs5bcnvc7id9j59fs80.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDAC-7ogQga-_lrRTieEW2trcrKMpC2VMg"
+          "current_key": "AIzaSyC4Jax4myE-Jf1CyBO1EyDkBSHdYktnmLw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "402941847413-udce5fbta6n0kdd5ink2257mmi5o6b37.apps.googleusercontent.com",
+              "client_id": "720452575230-jlvme6bpuqcfgcs5bcnvc7id9j59fs80.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

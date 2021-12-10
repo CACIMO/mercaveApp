@@ -298,6 +298,7 @@ class WooCommerceService {
     var orderCreatedInfo;
 
     List orderProducts = [];
+    List shipping_lines = [];
 
     /// ==============================================================
     /// Get user data
@@ -391,6 +392,11 @@ class WooCommerceService {
             'total': totalItemQuantityPrice.toString(),
           },
         );
+        shipping_lines.add({
+          'product_id': product['id'],
+          'method_title': 'method_title',
+          'method_id': 'flat-rate'
+        });
       }
     }
 
@@ -480,6 +486,7 @@ class WooCommerceService {
           "key": "_shipping_date",
           "value": deliveryDateSelected,
         },
+        {"key": "_order_shipping", "value": 4500},
         {
           "key": "billing_identificacion",
           "value": userData['billing_identification_number'],
@@ -490,6 +497,7 @@ class WooCommerceService {
         }
       ],
       'line_items': orderProducts,
+      'shipping_lines': shipping_lines
     };
 
     /// ==============================================================
