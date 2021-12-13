@@ -14,6 +14,7 @@ import 'package:mercave/app/pages/account/user_menu/user_menu.page.dart';
 import 'package:mercave/app/shared/components/buttons/link_button/link_button.widget.dart';
 import 'package:mercave/app/shared/components/buttons/round_icon_text_button/round_icon_text_button.widget.dart';
 import 'package:mercave/app/ui/constants.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class HomeLoginPage extends StatefulWidget {
   @override
@@ -28,6 +29,20 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
   void initState() {
     super.initState();
     privacyPoliciesAccepted = false;
+  }
+
+  void loginios() async {
+    final credential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+    );
+
+    print(credential);
+
+    // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
+    // after they have been validated with Apple (see `Integration` section for more information on how to do this)
   }
 
   void _loginWithFB(BuildContext context) async {
@@ -266,7 +281,8 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
         color: kCustomWhiteColor,
       ),
       onTapped: () {
-        _loginWithFB(context);
+        // _loginWithFB(context);
+        loginios();
       },
     );
   }
