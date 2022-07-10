@@ -16,6 +16,20 @@ const Color kCustomFacebookColor = Color(0xFF4068b0);
 const Color kCustomMailColor = Color(0xFF8d278a);
 const Color kCustomLinkColor = Color(0xFF0175cc);
 
+Map<int, Color> kCutomkColor =
+{
+  50:Color(0xFF8D2789).withOpacity(.1),
+  100:Color(0xFF8D2789).withOpacity(.2),
+  200:Color(0xFF8D2789).withOpacity(.3),
+  300:Color(0xFF8D2789).withOpacity(.4),
+  400:Color(0xFF8D2789).withOpacity(.5),
+  500:Color(0xFF8D2789).withOpacity(.6),
+  600:Color(0xFF8D2789).withOpacity(.7),
+  700:Color(0xFF8D2789).withOpacity(.8),
+  800:Color(0xFF8D2789).withOpacity(.9),
+  900:Color(0xFF8D2789)
+};
+
 /// ==========================================================================
 /// Placeholders
 /// ==========================================================================
@@ -43,6 +57,7 @@ const String kCustomNoProductAvailableDescriptionText =
     'Este producto no se encuentra disponible';
 
 const kCustomLoginFacebookText = 'Ingresa o Regístrate con facebook';
+const kCustomLoginIosText = 'Ingresa o Regístrate con tu Apple Id';
 const kCustomLoginMailText = 'Ingresa con correo registrado';
 const kCustomRegisterText = 'Regístrate';
 const kCustomAgreePoliciesTermsText =

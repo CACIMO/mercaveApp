@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void setState(fn) {
-    if(mounted){
+    if (mounted) {
       super.setState(fn);
     }
     // else{ // DESARROLLO
@@ -61,13 +61,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Retrieve value from localStorage in SQLite and set it in local variable loginPageDisplayed
-  isLoginPageDisplayed() async{
-    await SessionService.getItem(key: 'loginPageDisplayed').then((value) async{
-      if(value != null){
+  isLoginPageDisplayed() async {
+    await SessionService.getItem(key: 'loginPageDisplayed').then((value) async {
+      if (value != null) {
         loginPageDisplayed = value == 'true' ? true : false;
       }
     });
   }
+
   loadData() async {
     setState(() {
       error = false;
@@ -80,6 +81,8 @@ class _HomePageState extends State<HomePage> {
         key: 'app_config',
         value: json.encode(config),
       );
+
+      print('Config $config');
 
       versionData = await VersionCheckerService.versionCheck(
         configAppVersion: config['current_app_version'],
@@ -97,10 +100,9 @@ class _HomePageState extends State<HomePage> {
       });
     } catch (e) {
       setState(() {
-          loading = true;
-          error = true;
+        loading = true;
+        error = true;
       });
-      
     }
 
     await SessionService.removeItem(key: 'reloadHomePage');
@@ -117,12 +119,12 @@ class _HomePageState extends State<HomePage> {
       userData = await UserDBService.getUserById(id: userIdLogged);
     }
 
-    if (userIdLogged > 0){
+    if (userIdLogged > 0) {
       setState(() {
         userIsLogged = true;
       });
     }
-  
+
     // if (userData != null) {
     //   setState(() {
     //     if (userIdLogged > 0) userIsLogged = true;
@@ -135,9 +137,9 @@ class _HomePageState extends State<HomePage> {
     //   });
     // }
 
-    //If User is not Logged In and hasn't been redirected to Login page 
+    //If User is not Logged In and hasn't been redirected to Login page
     //then redirect them to Login page
-    if(!userIsLogged && !loginPageDisplayed){
+    if (!userIsLogged && !loginPageDisplayed) {
       SessionService.setItem(key: 'loginPageDisplayed', value: 'true');
       setState(() {
         loginPageDisplayed = true;
@@ -145,7 +147,7 @@ class _HomePageState extends State<HomePage> {
       await Navigator.push(
         context,
         MaterialPageRoute(
-        builder: (context) => HomeLoginPage(),
+          builder: (context) => HomeLoginPage(),
         ),
       );
     }
@@ -211,15 +213,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     if (versionData != null && versionData['update_version']) {
       return _getNoEqualVersionWidget();
-    }else {
+    } else {
+      print('Versiones $versionData');
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primaryColor: kCustomSecondaryColor),
         home: HomePageUI(
           context: context,
-          recommendedProducts: recommendedProducts,
-          productsOnOffered: productsOnOffered,
-          categories: categories,
+          recommendedProducts:
+              recommendedProducts.length != 0 ? recommendedProducts : [],
+          productsOnOffered:
+              productsOnOffered.length != 0 ? productsOnOffered : [],
+          categories: categories ?? [],
           userData: userData,
           userIsLogged: userIsLogged,
           cartProductsQty: cartProductsQty,

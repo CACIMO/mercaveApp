@@ -12,6 +12,7 @@ class ProductPrincipalSliderWidgetUI {
 
   double viewportFraction;
   double carouselHeight;
+  CarouselController controllerCarousel = CarouselController();
 
   ProductPrincipalSliderWidgetUI({
     @required this.context,
@@ -28,10 +29,12 @@ class ProductPrincipalSliderWidgetUI {
 
   Widget build() {
     return CarouselSlider(
-      height: carouselHeight,
-      viewportFraction: viewportFraction,
-      autoPlay: true,
-      pauseAutoPlayOnTouch: Duration(seconds: 10),
+      carouselController: controllerCarousel,
+      options: CarouselOptions(
+          height: carouselHeight,
+          viewportFraction: viewportFraction,
+          autoPlay: true,
+          pauseAutoPlayOnTouch: true),
       items: products.map((product) {
         return Builder(
           builder: (BuildContext context) {

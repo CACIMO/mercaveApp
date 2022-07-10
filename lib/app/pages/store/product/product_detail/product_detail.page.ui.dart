@@ -56,7 +56,7 @@ class ProductDetailPageUI {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
-        icon: Icon(Icons.close),
+        icon: Icon(Icons.close,color: kCustomBlackColor,),
         onPressed: () {
           Navigator.pop(context);
         },

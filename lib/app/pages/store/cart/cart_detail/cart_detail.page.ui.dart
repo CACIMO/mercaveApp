@@ -91,6 +91,7 @@ class CartDetailPageUI {
                     onTap: () => Navigator.pop(context, false),
                     child: Image.asset(
                       'assets/icons/back_arrow.png',
+                      color: kCustomBlackColor,
                       width: 25.0,
                     ),
                   ),
@@ -110,6 +111,7 @@ class CartDetailPageUI {
                       Text(
                         'Carrito',
                         style: TextStyle(
+                          color: kCustomBlackColor,
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -120,6 +122,7 @@ class CartDetailPageUI {
                             address,
                             style: TextStyle(
                               fontSize: 15.0,
+                              color: kCustomBlackColor,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
@@ -146,7 +149,10 @@ class CartDetailPageUI {
                                   cartId: 1);
                             });
                       },
-                      child: Icon(Icons.remove_shopping_cart),
+                      child: Icon(
+                        Icons.remove_shopping_cart,
+                        color: kCustomBlackColor,
+                      ),
                     ),
                   ],
                 ),
@@ -256,7 +262,9 @@ class CartDetailPageUI {
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => OrderDetailStepper(context: context,),
+                                builder: (context) => OrderDetailStepper(
+                                  context: context,
+                                ),
                                 //builder: (context) => CartOrderDetailPage(),
                               ),
                             );

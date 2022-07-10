@@ -58,6 +58,7 @@ class SearchProductPageUI {
 
   Widget _getAppBar() {
     return AppBar(
+      backgroundColor: kCustomPrimaryColor,
       titleSpacing: 0.0,
       title: SearchHeaderWidget(
         textToSearch: textToSearch,

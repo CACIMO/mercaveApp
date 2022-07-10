@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Form(
                     key: _formKey,
-                    autovalidate: _autoValidate,
+                    //autovalidate: _autoValidate,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(children: <Widget>[

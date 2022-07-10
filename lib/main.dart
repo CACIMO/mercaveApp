@@ -18,7 +18,7 @@ void main() async {
   SessionService.setItem(key: 'loginPageDisplayed', value: 'false')
       .then((value) => runApp(
             MaterialApp(
-              theme: ThemeData(primaryColor: kCustomSecondaryColor),
+              theme: ThemeData(primaryColor: kCustomPrimaryColor),
               debugShowCheckedModeBanner: false,
               //home: HomePage(),
               initialRoute: '/home',

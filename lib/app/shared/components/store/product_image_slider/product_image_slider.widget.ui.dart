@@ -16,6 +16,7 @@ class ProductImageSliderWidgetUI {
   double carouselHeight = 100.0;
   double carouselControlWidth = 40.0;
   double carouselListImageWidth;
+  CarouselController controllerCarousel = CarouselController();
 
   ProductImageSliderWidgetUI({
     this.context,
@@ -57,12 +58,14 @@ class ProductImageSliderWidgetUI {
 
   Widget _getCarouselSliderWidget() {
     return CarouselSlider(
-      height: carouselHeight,
-      viewportFraction: 0.30,
-      enableInfiniteScroll: true,
-      autoPlay: false,
-      pauseAutoPlayOnTouch: Duration(seconds: 10),
-      initialPage: 1,
+      carouselController: controllerCarousel,
+      options: CarouselOptions(
+          height: carouselHeight,
+          viewportFraction: 0.30,
+          enableInfiniteScroll: true,
+          autoPlay: false,
+          pauseAutoPlayOnTouch: true,
+          initialPage: 1),
       items: products.map((item) {
         return Builder(
           builder: (BuildContext context) {
@@ -111,7 +114,7 @@ class ProductImageSliderWidgetUI {
       width: carouselControlWidth,
       child: FlatButton(
         onPressed: () {
-          carouselSliderWidget.previousPage(
+          controllerCarousel.previousPage(
             duration: Duration(milliseconds: 200),
             curve: Curves.fastOutSlowIn,
           );
@@ -130,7 +133,7 @@ class ProductImageSliderWidgetUI {
       width: carouselControlWidth,
       child: FlatButton(
         onPressed: () {
-          carouselSliderWidget.nextPage(
+          controllerCarousel.nextPage(
             duration: Duration(milliseconds: 200),
             curve: Curves.fastOutSlowIn,
           );

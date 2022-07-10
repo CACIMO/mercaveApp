@@ -35,7 +35,7 @@ class WordPressService {
     }
   }
 
-  static Future createUserWithFacebookUserData({Map profile}) async {
+  static Future createUserWithFacebookUserData({Map profile, String platform}) async {
     try {
       Map userCreated;
       String username = "fb_" + profile['id'];

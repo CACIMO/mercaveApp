@@ -364,7 +364,7 @@ class WooCommerceService {
       Map product = cart['products'][i];
       cartProductItems += product['quantity'];
     }
-
+    var lastProd;
     for (var i = 0; i < cart['products'].length; i++) {
       Map product = cart['products'][i];
       double itemPrice = product['price'];
@@ -392,13 +392,15 @@ class WooCommerceService {
             'total': totalItemQuantityPrice.toString(),
           },
         );
-        shipping_lines.add({
-          'product_id': product['id'],
-          'method_title': 'method_title',
-          'method_id': 'flat-rate'
-        });
+        lastProd = product['id'];
       }
     }
+
+    shipping_lines.add({
+      'product_id': lastProd,
+      'method_title': 'Costo fijo (\$5000)',
+      'method_id': '29521'
+    });
 
     /// ==============================================================
     /// Set the data to be sent to create the order
@@ -486,7 +488,6 @@ class WooCommerceService {
           "key": "_shipping_date",
           "value": deliveryDateSelected,
         },
-        {"key": "_order_shipping", "value": 4500},
         {
           "key": "billing_identificacion",
           "value": userData['billing_identification_number'],

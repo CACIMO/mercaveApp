@@ -39,6 +39,7 @@ class SearchPageUI {
 
   Widget _getAppBarWidget() {
     return AppBar(
+      backgroundColor: kCustomPrimaryColor,
       title: Row(
         children: <Widget>[
           Expanded(
@@ -50,6 +51,7 @@ class SearchPageUI {
                   child: Image.asset(
                     'assets/icons/back_arrow.png',
                     width: 25.0,
+                    color: kCustomWhiteColor,
                   ),
                 ),
               ],
@@ -58,14 +60,24 @@ class SearchPageUI {
           Expanded(
             flex: 8,
             child: TextField(
+
               autofocus: true,
+              cursorColor: kCustomWhiteColor,
+
               decoration: new InputDecoration(
+
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kCustomPrimaryColor)),
+                hintStyle: TextStyle(color: kCustomWhiteColor),
                 hintText: hintText,
               ),
               onChanged: (text) {
                 onTextSearchChanged(text);
               },
               textAlign: TextAlign.left,
+              style: TextStyle(
+                color:kCustomWhiteColor
+              ),
             ),
           ),
         ],

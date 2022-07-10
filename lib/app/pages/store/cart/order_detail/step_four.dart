@@ -236,9 +236,20 @@ class _StepFourState extends State<StepFour> {
           labelText: widget.customerType == 'natural_person'
               ? 'Nombre Completo *'
               : 'Nombre de la empresa *',
-          border: OutlineInputBorder(
+
+          floatingLabelStyle: TextStyle(color: kCustomPrimaryColor),
+          focusedBorder:OutlineInputBorder(
+            borderSide: BorderSide(color: kCustomPrimaryColor),
             borderRadius: BorderRadius.all(
-              Radius.circular(10.0),
+                Radius.circular(10.0)
+
+            )
+          ) ,
+          border: OutlineInputBorder(
+
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0)
+
             ),
           ),
           fillColor: kCustomWhiteColor,
@@ -326,6 +337,14 @@ class _StepFourState extends State<StepFour> {
         cursorColor: kCustomPrimaryColor,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
+          floatingLabelStyle: TextStyle(color: kCustomPrimaryColor),
+          focusedBorder:OutlineInputBorder(
+              borderSide: BorderSide(color: kCustomPrimaryColor),
+              borderRadius: BorderRadius.all(
+                  Radius.circular(10.0)
+
+              )
+          ) ,
           isDense: inputIsDense,
           hintText: 'Ingresa el número de documento',
           labelText: 'Número Documento',

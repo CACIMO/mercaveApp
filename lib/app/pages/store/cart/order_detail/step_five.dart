@@ -408,6 +408,11 @@ class _StepFiveState extends State<StepFive> {
             controller: orderNotesController,
             maxLines: 1,
             decoration: InputDecoration(
+              focusColor: kCustomPrimaryColor,
+              floatingLabelStyle: TextStyle(color: kCustomPrimaryColor),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: kCustomPrimaryColor),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
               isDense: InputIsDense,
               contentPadding: EdgeInsets.symmetric(
                   vertical: paddingTextFieldVertical, horizontal: 16.0),

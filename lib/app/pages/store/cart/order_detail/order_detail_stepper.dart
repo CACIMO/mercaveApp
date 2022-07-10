@@ -314,7 +314,8 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
               textCtrlPlatePart3.text,
               textCtrlAdditionalInfo.text,
               userId,
-              context, false);
+              context,
+              false);
         } else if (_currentStep == 1) {
           OrderDetailStepperController.saveStepTwoDataToLocalStorage(
               deliveryDays, dayIdSelected, hourIdSelected);
@@ -329,7 +330,8 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
   }
 
   onStepTapped(int index) {
-    if(checkoutSuccessful) return; //Disable step buttons when checkout is successful
+    if (checkoutSuccessful)
+      return; //Disable step buttons when checkout is successful
 
     bool canGoToTappedStep = false;
     var i;
@@ -377,7 +379,8 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
                 textCtrlPlatePart3.text,
                 textCtrlAdditionalInfo.text,
                 userId,
-                context,false);
+                context,
+                false);
           } else if (_currentStep == 1) {
             OrderDetailStepperController.saveStepTwoDataToLocalStorage(
                 deliveryDays, dayIdSelected, hourIdSelected);
@@ -405,17 +408,17 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
 
   //On Android devices, handle Back button pressed event
   Future<bool> goBackStepByStep() {
-    if(checkoutSuccessful){ 
+    if (checkoutSuccessful) {
       //Redirect option when checkout is successful in case confirmation dialog fails to be displayed
       goHome();
-    }else{
+    } else {
       if (_currentStep >= 1) {
         setState(() => _currentStep--);
       } else {
         Navigator.pop(context);
       }
     }
-    
+
     return Future.value(false);
   }
 
@@ -645,10 +648,10 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    if(checkoutSuccessful){
-                      //Redirect option when checkout is successful in case confirmation dialog fails to be displayed 
-                      goHome(); 
-                    }else if (_currentStep >= 1) {
+                    if (checkoutSuccessful) {
+                      //Redirect option when checkout is successful in case confirmation dialog fails to be displayed
+                      goHome();
+                    } else if (_currentStep >= 1) {
                       setState(() => _currentStep--);
                     } else {
                       Navigator.pop(context);
@@ -680,6 +683,7 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
   }
 
   Widget _getBodyWidget(BuildContext context) {
+    MaterialColor colorCustom = MaterialColor(0xFF8D2789, kCutomkColor);
     //Calculate stepper content height
     double bodyheight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).padding.top + kToolbarHeight);
@@ -690,14 +694,16 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
       height: double.infinity,
       child: Theme(
         data: ThemeData(
-          primaryColor: kCustomPrimaryColor,
-        ),
+            accentColor: colorCustom,
+            primarySwatch: colorCustom,
+            colorScheme: ColorScheme.light(primary: colorCustom)),
         child: Stepper(
           type: StepperType.horizontal,
           physics: ClampingScrollPhysics(),
           currentStep: _currentStep,
           onStepContinue: next,
           onStepTapped: onStepTapped,
+          /* 
           controlsBuilder: (BuildContext context,
               {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
             return SizedBox(
@@ -746,7 +752,7 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
               //       )),
               // ),
             );
-          },
+          }, */
           steps: [
             Step(
                 title: Text(""),
@@ -754,20 +760,20 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
                   height: heightStepContent,
                   alignment: Alignment.centerLeft,
                   child: StepOne(
-                      neighborhoods: neighborhoods,
-                      formKey: _stepOneForm,
-                      onSelectedNeighborhood: onSelectedNeighborhood,
-                      onStreetSelected: onStreetSelected,
-                      ontextCtrlPlatePart1: ontextCtrlPlatePart1,
-                      ontextCtrlPlatePart2: ontextCtrlPlatePart2,
-                      ontextCtrlPlatePart3: ontextCtrlPlatePart3,
-                      onTextCtrlAdditionalInfo: onTextCtrlAdditionalInfo,
-                      selectedNeighborhood: selectedNeighborhood,
-                      selectedStreet: selectedStreet,
-                      textCtrlPlatePart1: textCtrlPlatePart1,
-                      textCtrlPlatePart2: textCtrlPlatePart2,
-                      textCtrlPlatePart3: textCtrlPlatePart3,
-                      textCtrlAdditionalInfo: textCtrlAdditionalInfo,
+                    neighborhoods: neighborhoods,
+                    formKey: _stepOneForm,
+                    onSelectedNeighborhood: onSelectedNeighborhood,
+                    onStreetSelected: onStreetSelected,
+                    ontextCtrlPlatePart1: ontextCtrlPlatePart1,
+                    ontextCtrlPlatePart2: ontextCtrlPlatePart2,
+                    ontextCtrlPlatePart3: ontextCtrlPlatePart3,
+                    onTextCtrlAdditionalInfo: onTextCtrlAdditionalInfo,
+                    selectedNeighborhood: selectedNeighborhood,
+                    selectedStreet: selectedStreet,
+                    textCtrlPlatePart1: textCtrlPlatePart1,
+                    textCtrlPlatePart2: textCtrlPlatePart2,
+                    textCtrlPlatePart3: textCtrlPlatePart3,
+                    textCtrlAdditionalInfo: textCtrlAdditionalInfo,
                   ),
                 ),
                 isActive: _currentStep >= 0 && !checkoutSuccessful),

@@ -66,6 +66,8 @@ class StepOneUI {
                   child: Container(
                     height: 55.0,
                     child: TextFormField(
+                        cursorColor: kCustomPrimaryColor,
+
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: selectedNeighborhoodUI == null
                             ? ''
@@ -99,7 +101,7 @@ class StepOneUI {
                         readOnly: true,
                         decoration: new InputDecoration(
                           suffixIcon: GestureDetector(
-                            child: Icon(Icons.arrow_forward),
+                            child: Icon(Icons.arrow_forward,color: kCustomPrimaryColor,),
                           ),
                           hintText: 'Seleccione el barrio',
                           hintStyle: TextStyle(color: kCustomHintColor),
@@ -129,6 +131,7 @@ class StepOneUI {
                   child: Container(
                     height: 55.0,
                     child: TextFormField(
+                      cursorColor: kCustomPrimaryColor,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller:
                             selectedStreetUI == null ? '' : selectedStreetUI,
@@ -161,7 +164,7 @@ class StepOneUI {
                         readOnly: true,
                         decoration: new InputDecoration(
                           suffixIcon: GestureDetector(
-                            child: Icon(Icons.arrow_forward),
+                            child: Icon(Icons.arrow_forward,color: kCustomPrimaryColor),
                           ),
                           hintText: 'Seleccione el tipo de vía',
                           hintStyle: TextStyle(color: kCustomHintColor),
@@ -180,6 +183,7 @@ class StepOneUI {
                 Expanded(
                   flex: 4,
                   child: TextFormField(
+                    cursorColor: kCustomPrimaryColor,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: textCtrlPlatePart1UI == null
                         ? ''
@@ -216,6 +220,7 @@ class StepOneUI {
                 Expanded(
                   flex: 4,
                   child: TextFormField(
+                    cursorColor: kCustomPrimaryColor,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: textCtrlPlatePart2UI == null
                         ? ''
@@ -252,6 +257,7 @@ class StepOneUI {
                 Expanded(
                   flex: 4,
                   child: TextFormField(
+                    cursorColor: kCustomPrimaryColor,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: textCtrlPlatePart3UI == null
                         ? ''
@@ -285,6 +291,7 @@ class StepOneUI {
                 Expanded(
                   flex: 1,
                   child: TextFormField(
+                    cursorColor: kCustomPrimaryColor,
                     controller: textCtrlAdditionalInfo == null
                         ? ''
                         : textCtrlAdditionalInfo,

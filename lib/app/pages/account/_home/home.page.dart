@@ -1,9 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mercave/app/core/services/auth/auth.service.dart';
-import 'package:mercave/app/core/services/facebook/facebook.service.dart';
+//import 'package:mercave/app/core/services/facebook/facebook.service.dart';
 import 'package:mercave/app/core/services/sqlite/tables/user/user.service.dart';
 import 'package:mercave/app/core/services/utils/alert/alert.service.dart';
 import 'package:mercave/app/core/services/utils/loader/loader.service.dart';
@@ -15,6 +16,8 @@ import 'package:mercave/app/shared/components/buttons/link_button/link_button.wi
 import 'package:mercave/app/shared/components/buttons/round_icon_text_button/round_icon_text_button.widget.dart';
 import 'package:mercave/app/ui/constants.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 
 class HomeLoginPage extends StatefulWidget {
   @override
@@ -22,31 +25,45 @@ class HomeLoginPage extends StatefulWidget {
 }
 
 class _HomeLoginPageState extends State<HomeLoginPage> {
-  final facebookLogin = FacebookLogin();
+  //final facebookLogin = FacebookLogin();
   bool privacyPoliciesAccepted;
 
   @override
   void initState() {
     super.initState();
-    privacyPoliciesAccepted = false;
+    privacyPoliciesAccepted = true;
   }
 
-  void loginios() async {
-    final credential = await SignInWithApple.getAppleIDCredential(
-      scopes: [
-        AppleIDAuthorizationScopes.email,
-        AppleIDAuthorizationScopes.fullName,
-      ],
-    );
-
-    print(credential);
-
-    // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
-    // after they have been validated with Apple (see `Integration` section for more information on how to do this)
+  String sha256ofString(String input) {
+    final bytes = utf8.encode(input);
+    final digest = sha256.convert(bytes);
+    return digest.toString();
   }
+
+  // void loginios() async {
+  //   print("Credencial: ${credential.familyName}");
+  //   AuthorizationCredentialAppleID credential =
+  //       await SignInWithApple.getAppleIDCredential(scopes: [
+  //     AppleIDAuthorizationScopes.email,
+  //     AppleIDAuthorizationScopes.fullName
+  //   ]);
+  //
+  //   print("Credencial: ${credential.familyName}");
+  //
+  //   // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
+  //   // after they have been validated with Apple (see `Integration` section for more information on how to do this)
+  // }
 
   void _loginWithFB(BuildContext context) async {
-    FacebookService.login().then((profile) async {
+    if (!privacyPoliciesAccepted) {
+      AlertService.showErrorAlert(
+        context: context,
+        title: 'Error',
+        description: 'Debe aceptar el acuerdo de términos y condiciones.',
+      );
+      return;
+    }
+    /* FacebookService.login().then((profile) async {
       if (profile != null) {
         LoaderService.showLoader(
           context: context,
@@ -59,8 +76,7 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
           /// ==================================================================
           Map userCreated =
               await WordPressService.createUserWithFacebookUserData(
-            profile: profile,
-          );
+                  profile: profile, platform: 'fb_');
 
           userCreated['avatar'] = profile['picture']['data']['url'];
 
@@ -84,7 +100,68 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
         title: 'Error',
         description: e.toString(),
       );
-    });
+    }); */
+  }
+
+  void _loginios(BuildContext context) async {
+    if (!privacyPoliciesAccepted) {
+      AlertService.showErrorAlert(
+        context: context,
+        title: 'Error',
+        description: 'Debe aceptar el acuerdo de términos y condiciones.',
+      );
+      return;
+    }
+    final credential = await SignInWithApple.getAppleIDCredential(scopes: [
+      AppleIDAuthorizationScopes.email,
+      AppleIDAuthorizationScopes.fullName
+    ]);
+
+    if (credential.state == 'authorized') {
+      LoaderService.showLoader(
+        context: context,
+        text: 'Validando...',
+      );
+      Map profile = {
+        'id': credential.userIdentifier,
+        'first_name': credential.givenName,
+        'name': '${credential.givenName} ${credential.familyName}',
+        'middle_name': null,
+        'last_name': credential.familyName,
+        'email': credential.email
+      };
+
+      try {
+        /// ==================================================================
+        /// Create the facebook user as a wordPress user
+        /// ==================================================================
+        Map userCreated = await WordPressService.createUserWithFacebookUserData(
+            profile: profile, platform: 'apple_');
+
+        //userCreated['avatar'] = profile['picture']['data']['url'];
+
+        createLocalUserAndRedirect(
+          context: context,
+          userCreated: userCreated,
+        );
+      } catch (e) {
+        LoaderService.dismissLoader(context: context);
+
+        AlertService.showErrorAlert(
+          context: context,
+          title: 'Error',
+          description: 'Error: ' + e.message,
+        );
+      }
+    } else {
+      LoaderService.dismissLoader(context: context);
+
+      AlertService.showErrorAlert(
+        context: context,
+        title: 'Error',
+        description: 'Error: ' + 'Apple ID Services Disabled',
+      );
+    }
   }
 
   void createLocalUserAndRedirect(
@@ -189,6 +266,7 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               children: <Widget>[
+                if (Platform.isIOS) _getIosLoginButtonWidget(context),
                 _getFacebookLoginButtonWidget(context),
                 _getMailLoginButtonWidget(context),
                 SizedBox(height: 25.0),
@@ -208,7 +286,7 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Column(
           children: <Widget>[
-            _getAgreeWithTermsAndConditionsWidget(context),
+            //_getAgreeWithTermsAndConditionsWidget(context),
             SizedBox(height: 15.0),
             _getTermsAndPoliciesLinksWidget(context)
           ],
@@ -281,8 +359,23 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
         color: kCustomWhiteColor,
       ),
       onTapped: () {
-        // _loginWithFB(context);
-        loginios();
+        _loginWithFB(context);
+        //loginios();
+      },
+    );
+  }
+
+  Widget _getIosLoginButtonWidget(BuildContext context) {
+    return RoundIconTextButton(
+      text: kCustomLoginIosText,
+      textColor: kCustomWhiteColor,
+      backgroundColor: Colors.black,
+      icon: Icon(
+        FontAwesomeIcons.apple,
+        color: kCustomWhiteColor,
+      ),
+      onTapped: () {
+        _loginios(context);
       },
     );
   }
@@ -297,12 +390,19 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
         color: kCustomWhiteColor,
       ),
       onTapped: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginPage(),
-          ),
-        );
+        if (!privacyPoliciesAccepted) {
+          AlertService.showErrorAlert(
+            context: context,
+            title: 'Error',
+            description: 'Debe aceptar el acuerdo de términos y condiciones.',
+          );
+        } else
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            ),
+          );
       },
     );
   }
@@ -310,12 +410,20 @@ class _HomeLoginPageState extends State<HomeLoginPage> {
   Widget _getRegisterLinkWidget(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => RegisterPage(),
-          ),
-        );
+        if (!privacyPoliciesAccepted) {
+          AlertService.showErrorAlert(
+            context: context,
+            title: 'Error',
+            description: 'Debe aceptar el acuerdo de términos y condiciones.',
+          );
+          return;
+        } else
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegisterPage(),
+            ),
+          );
       },
       child: Text(
         kCustomRegisterText,

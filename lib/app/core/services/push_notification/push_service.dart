@@ -8,7 +8,9 @@ class PushNotificactionService {
 
   Future initialise() async {
     if (Platform.isIOS) {
-      _fcm.requestNotificationPermissions(IosNotificationSettings());
+      _fcm.requestNotificationPermissions(IosNotificationSettings(
+
+      ));
     }
 
     String token = await _fcm.getToken();

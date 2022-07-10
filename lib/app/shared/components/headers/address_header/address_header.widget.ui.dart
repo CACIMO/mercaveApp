@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:mercave/app/pages/store/_home/home.page.dart';
 import 'package:mercave/app/shared/components/buttons/whatsapp_button/whatsapp.button.component.dart';
+import 'package:mercave/app/shared/constants/constant.service.dart';
 import 'package:mercave/app/ui/constants.dart';
 
 class AddressHeaderWidgetUI {
@@ -195,6 +196,7 @@ class AddressHeaderWidgetUI {
         title,
         textAlign: TextAlign.center,
         style: TextStyle(
+          color: kCustomBlackColor,
           fontSize: 15.0,
           fontWeight: FontWeight.bold,
         ),
@@ -222,6 +224,7 @@ class AddressHeaderWidgetUI {
                     subtitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      color: kCustomBlackColor,
                       fontWeight: FontWeight.normal,
                     ),
                   ),

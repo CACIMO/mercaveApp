@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:mercave/app/shared/constants/constant.service.dart';
 import 'package:mercave/app/ui/constants.dart';
 
 class GatewayPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class _GatewayPageState extends State<GatewayPage> {
     return WebviewScaffold(
       url: widget.checkoutUrl,
       appBar: new AppBar(
+        backgroundColor: kCustomPrimaryColor,
         automaticallyImplyLeading: false,
         title: Row(
           children: <Widget>[
@@ -28,6 +30,7 @@ class _GatewayPageState extends State<GatewayPage> {
               },
               child: Image.asset(
                 'assets/icons/back_arrow.png',
+                color: kCustomWhiteColor,
                 width: 25.0,
               ),
             ),

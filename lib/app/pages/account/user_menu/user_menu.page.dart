@@ -159,6 +159,7 @@ class _UserMenuPageState extends State<UserMenuPage> {
       elevation: 0,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
+        color: kCustomBlackColor,
         iconSize: 26.0,
         onPressed: () {
           openHomePage();

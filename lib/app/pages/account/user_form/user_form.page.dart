@@ -93,7 +93,7 @@ class _UserFormPageState extends State<UserFormPage> {
   Widget _getAppBarWidget(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: kCustomSecondaryColor,
+      backgroundColor: kCustomPrimaryColor,
       elevation: 0,
       title: Row(
         children: <Widget>[
@@ -101,10 +101,8 @@ class _UserFormPageState extends State<UserFormPage> {
             onTap: () {
               Navigator.of(context).pop();
             },
-            child: Image.asset(
-              'assets/icons/back_arrow.png',
-              width: 25.0,
-            ),
+            child: Image.asset('assets/icons/back_arrow.png',
+                color: kCustomWhiteColor, width: 25.0),
           ),
           SizedBox(width: 10.0),
           Expanded(
@@ -114,7 +112,7 @@ class _UserFormPageState extends State<UserFormPage> {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 21.0,
-                color: kCustomBlackColor,
+                color: kCustomWhiteColor,
               ),
             ),
           ),
@@ -206,7 +204,7 @@ class _UserFormPageState extends State<UserFormPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Form(
           key: _formKey,
-          autovalidate: _autoValidate,
+          //autovalidate: _autoValidate,
           child: Column(
             children: <Widget>[
               SizedBox(height: 10.0),
@@ -459,6 +457,7 @@ class _UserFormPageState extends State<UserFormPage> {
         minWidth: MediaQuery.of(context).size.width,
         child: RoundButtonWidget(
           text: 'GUARDAR',
+          textColor: kCustomWhiteColor,
           onPressed: () async {
             if (_formKey.currentState.validate()) {
               _formKey.currentState.save();

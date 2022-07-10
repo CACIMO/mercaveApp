@@ -39,6 +39,7 @@ class AddressPageUI {
   });
   Widget _getAppBarWidget() {
     return AppBar(
+      backgroundColor: kCustomPrimaryColor,
       automaticallyImplyLeading: false,
       title: Row(
         children: <Widget>[
@@ -50,6 +51,7 @@ class AddressPageUI {
                   onTap: () => Navigator.pop(context, false),
                   child: Image.asset(
                     'assets/icons/back_arrow.png',
+                    color:kCustomWhiteColor,
                     width: 25.0,
                   ),
                 ),

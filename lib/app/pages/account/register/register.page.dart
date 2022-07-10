@@ -49,7 +49,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Image.asset(
                         'assets/icons/back_arrow.png',
                         width: 25.0,
-                        color: kCustomWhiteColor,
                       ),
                     ),
                   ],
@@ -73,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
         padding: const EdgeInsets.all(8.0),
         child: Form(
           key: _formKey,
-          autovalidate: _autoValidate,
+          //autovalidate: _autoValidate,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(children: <Widget>[

@@ -123,6 +123,7 @@ class _OrderListPageState extends State<OrderListPage> {
 
   Widget _getAppBarWidget({BuildContext context}) {
     return AppBar(
+      backgroundColor: kCustomPrimaryColor,
       automaticallyImplyLeading: false,
       title: Row(
         children: <Widget>[
@@ -134,6 +135,7 @@ class _OrderListPageState extends State<OrderListPage> {
                   onTap: () => Navigator.pop(context, false),
                   child: Image.asset(
                     'assets/icons/back_arrow.png',
+                    color:kCustomWhiteColor,
                     width: 25.0,
                   ),
                 ),

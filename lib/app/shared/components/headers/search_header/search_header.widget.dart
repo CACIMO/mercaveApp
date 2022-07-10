@@ -30,7 +30,7 @@ class _SearchHeaderWidgetState extends State<SearchHeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return SearchHeaderWidgetUI(
-      context: context,
+        context: context,
       textToSearch: widget.textToSearch,
       onSearchSubmitted: widget.onSearchSubmitted,
       onCloseButtonTapped: widget.onCloseButtonTapped,

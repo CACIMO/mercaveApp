@@ -4,6 +4,7 @@ import 'package:mercave/app/pages/store/product/product_detail/product_detail.pa
 import 'package:mercave/app/shared/components/buttons/round_button/round_button.widget.dart';
 import 'package:mercave/app/shared/components/loaders/page_loader/page_loader.widget.dart';
 import 'package:mercave/app/shared/components/store/product_list_item/product_list_item.widget.dart';
+import 'package:mercave/app/shared/constants/constant.service.dart';
 import 'package:mercave/app/shared/utils/string/string.service.dart';
 import 'package:mercave/app/ui/constants.dart';
 
@@ -152,6 +153,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
 
   Widget _getAppBarWidget({BuildContext context}) {
     return AppBar(
+      backgroundColor: kCustomPrimaryColor,
       automaticallyImplyLeading: false,
       title: Row(
         children: <Widget>[
@@ -163,6 +165,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   onTap: () => Navigator.pop(context, false),
                   child: Image.asset(
                     'assets/icons/back_arrow.png',
+                    color: kCustomWhiteColor,
                     width: 25.0,
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mercave/app/pages/store/cart/cart_detail/cart_detail.page.dart';
+import 'package:mercave/app/ui/constants.dart';
 
 class SearchHeaderWidgetUI {
   final BuildContext context;
@@ -36,12 +37,17 @@ class SearchHeaderWidgetUI {
 
   Widget _getSearchInputWidget() {
     return TextField(
+      style: TextStyle(color: kCustomWhiteColor),
+      cursorColor: kCustomWhiteColor,
+      decoration: new InputDecoration(
+        hintText: 'Buscar en Merca Vé',
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: kCustomPrimaryColor)),
+        hintStyle: TextStyle(color: kCustomWhiteColor),
+      ),
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.search,
       controller: searchTextController,
-      decoration: new InputDecoration(
-        hintText: 'Buscar en Merca Vé',
-      ),
       onSubmitted: (text) {
         onSearchSubmitted(text);
       },
@@ -62,8 +68,10 @@ class SearchHeaderWidgetUI {
           child: Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Image.asset(
+
               'assets/icons/back_arrow.png',
               width: 32.0,
+              color: kCustomWhiteColor,
             ),
           ),
         )
@@ -106,6 +114,7 @@ class SearchHeaderWidgetUI {
       },
       child: Image.asset(
         'assets/icons/cart.png',
+        color: kCustomWhiteColor,
         width: 38.0,
       ),
     );
