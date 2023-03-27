@@ -17,7 +17,7 @@ class RoundIconTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       onPressed: () {
         onTapped();
       },
@@ -37,11 +37,11 @@ class RoundIconTextButton extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      )/*,
       color: backgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: new BorderRadius.circular(18.0),
-      ),
+      ),*/
     );
   }
 }

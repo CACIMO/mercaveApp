@@ -27,10 +27,10 @@ class RoundButtonWidgetUI {
   }
 
   build() {
-    return RaisedButton(
-      shape: RoundedRectangleBorder(
+    return ElevatedButton(
+      /*shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(40.0),
-      ),
+      ),*/
       child: Padding(
         padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
         child: Text(
@@ -41,7 +41,7 @@ class RoundButtonWidgetUI {
           ),
         ),
       ),
-      color: backgroundColorItem,
+      //color: backgroundColorItem,
       onPressed: onPressed,
     );
   }

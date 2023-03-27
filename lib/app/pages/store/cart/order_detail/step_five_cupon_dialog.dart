@@ -142,13 +142,13 @@ class _CouponDialogState extends State<CouponDialog> {
         ],
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {
             AlertService.dismissAlert(context: context);
           },
           child: Text('Cerrar'),
         ),
-        FlatButton(
+        TextButton(
           onPressed: () async {
             if (couponCode != null && couponCode != '') {
               LoaderService.showLoader(

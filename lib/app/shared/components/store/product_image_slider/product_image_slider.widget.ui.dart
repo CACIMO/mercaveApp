@@ -112,7 +112,7 @@ class ProductImageSliderWidgetUI {
     return Container(
       height: carouselHeight,
       width: carouselControlWidth,
-      child: FlatButton(
+      child: TextButton(
         onPressed: () {
           controllerCarousel.previousPage(
             duration: Duration(milliseconds: 200),
@@ -131,7 +131,7 @@ class ProductImageSliderWidgetUI {
     return Container(
       height: carouselHeight,
       width: carouselControlWidth,
-      child: FlatButton(
+      child: TextButton(
         onPressed: () {
           controllerCarousel.nextPage(
             duration: Duration(milliseconds: 200),

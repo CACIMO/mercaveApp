@@ -620,7 +620,7 @@ class _OrderDetailStepperState extends State<OrderDetailStepper> {
           ],
         ),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               if (_cashAmountForm.currentState.validate()) {
                 _cashAmountForm.currentState.save();

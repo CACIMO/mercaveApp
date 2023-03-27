@@ -210,17 +210,17 @@ class ProductPrincipalSliderWidgetUI {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
+                    ElevatedButton(
+                     /* shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
-                      ),
+                      ),*/
                       child: Text(
                         'Ver más',
                         style: TextStyle(
                           fontSize: 18.0,
                         ),
                       ),
-                      color: kCustomSecondaryColor,
+                      //color: kCustomSecondaryColor,
                       onPressed: () {
                         onProductTapped(product);
                       },

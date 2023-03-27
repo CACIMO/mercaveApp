@@ -12,20 +12,20 @@ class BlockButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return ElevatedButton(
       onPressed: onPressed ?? () {},
-      color: kCustomPrimaryColor,
+      //color: kCustomPrimaryColor,
       child: Text(
         text,
         style: TextStyle(
           color: kCustomWhiteColor,
         ),
       ),
-      shape: RoundedRectangleBorder(
+     /* shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
           10.0,
         ),
-      ),
+      ),*/
     );
   }
 }

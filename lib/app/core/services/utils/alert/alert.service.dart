@@ -26,7 +26,7 @@ class AlertService {
           description,
         ),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop('dialog');
 
@@ -59,7 +59,7 @@ class AlertService {
         title: title,
         content: description,
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop('dialog');
 
@@ -98,7 +98,7 @@ class AlertService {
         ),
         content: Text(description),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               AlertService.dismissAlert(context: context);
 
@@ -108,7 +108,7 @@ class AlertService {
             },
             child: Text('No'),
           ),
-          FlatButton(
+          TextButton(
             onPressed: () {
               AlertService.dismissAlert(context: context);
 
@@ -151,7 +151,7 @@ class AlertService {
         ),
         content: Text(description),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               AlertService.dismissAlert(context: context);
 
@@ -161,7 +161,7 @@ class AlertService {
             },
             child: Text('Ingresar'),
           ),
-          FlatButton(
+          TextButton(
             onPressed: () {
               AlertService.dismissAlert(context: context);
 

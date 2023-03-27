@@ -12,20 +12,20 @@ class ClearButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       onPressed: onPressed ?? () {},
-      color: kCustomWhiteColor,
+     // color: kCustomWhiteColor,
       child: Text(
         text,
         style: TextStyle(
           color: kCustomPrimaryColor,
         ),
       ),
-      shape: RoundedRectangleBorder(
+     /* shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
           10.0,
         ),
-      ),
+      ),*/
     );
   }
 }

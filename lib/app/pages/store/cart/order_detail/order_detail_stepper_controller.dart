@@ -427,7 +427,7 @@ class OrderDetailStepperController {
                 'Su pedido ha sido realizado exitosamente.' + redirectText,
               ),
               actions: <Widget>[
-                FlatButton(
+                TextButton(
                   onPressed: () {
                     Navigator.of(context, rootNavigator: true).pop('dialog');
 
@@ -506,7 +506,7 @@ class OrderDetailStepperController {
               e.message,
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
                 },

@@ -44,7 +44,7 @@ class IncreaseDecreaseButtonUI {
 
     return ButtonTheme(
       minWidth: 10.0,
-      child: FlatButton(
+      child: TextButton(
         onPressed: onDecreased,
         child: Container(
           child: Icon(
@@ -60,7 +60,7 @@ class IncreaseDecreaseButtonUI {
   getIncreaseButtonWidget() {
     return ButtonTheme(
       minWidth: 10.0,
-      child: FlatButton(
+      child: TextButton(
         onPressed: onIncreased,
         child: Container(
           child: Icon(
@@ -86,7 +86,7 @@ class IncreaseDecreaseButtonUI {
   }
 
   getAddTextButton() {
-    return FlatButton(
+    return TextButton(
       child: Text(
         'Agregar',
         textAlign: TextAlign.center,
